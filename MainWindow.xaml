@@ -2,72 +2,88 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfNumeralAlignmentDemo" mc:Ignorable="d" Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="80" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.Resources>
-            <Style x:Key="ColumnHeader" TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="12" />
-                <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="Grid.Row" Value="0" />
-                <Setter Property="Margin" Value="0,16,0,16" />
-            </Style>
-            <Style x:Key="SmallLabel" TargetType="{x:Type Run}">
-                <Setter Property="FontSize" Value="12" />
-            </Style>
-            <Style x:Key="Output" TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="32" />
-                <Setter Property="HorizontalAlignment" Value="Left" />
-            </Style>
-            <Style x:Key="NumNormal" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Output}">
-                <Setter Property="Grid.Column" Value="1" />
-            </Style>
-            <Style x:Key="NumTabular" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Output}">
-                <Setter Property="Grid.Column" Value="3" />
-                <Setter Property="Typography.NumeralAlignment" Value="Tabular" />
-            </Style>
-        </Grid.Resources>
+        xmlns:local="clr-namespace:WpfNumeralAlignmentDemo" mc:Ignorable="d" Title="MainWindow"
+        SizeToContent="WidthAndHeight" TextOptions.TextRenderingMode="Grayscale"
+        TextOptions.TextFormattingMode="Display">
+    <Border Padding="40,32,40,40">
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style x:Key="ColumnHeader" TargetType="{x:Type TextBlock}">
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Grid.Row" Value="0" />
+                </Style>
+                <Style x:Key="SmallLabel" TargetType="{x:Type Run}">
+                    <Setter Property="FontSize" Value="14" />
+                </Style>
+                <Style x:Key="Output" TargetType="{x:Type TextBlock}">
+                    <Setter Property="FontSize" Value="32" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="Margin" Value="0,16,0,0" />
+                    <Setter Property="TextAlignment" Value=" Center" />
+                    <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+                    <!--<Setter Property="LineHeight" Value="36" />-->
+                </Style>
+                <Style x:Key="NumNormal" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Output}">
+                    <Setter Property="Grid.Column" Value="1" />
+                </Style>
+                <Style x:Key="NumTabular" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Output}">
+                    <Setter Property="Grid.Column" Value="3" />
+                    <Setter Property="Typography.NumeralAlignment" Value="Tabular" />
+                </Style>
+            </Grid.Resources>
 
-        <TextBlock Grid.Column="1" Style="{StaticResource ColumnHeader}">(Default)</TextBlock>
-        <TextBlock Grid.Column="3" Style="{StaticResource ColumnHeader}">Typography.NumeralAlignment="Tabular"</TextBlock>
+            <TextBlock Grid.Column="1" Style="{StaticResource ColumnHeader}">Default</TextBlock>
+            <TextBlock Grid.Column="3" Style="{StaticResource ColumnHeader}">Tabular</TextBlock>
 
-        <TextBlock Grid.Row="1" FontFamily="Segoe UI" Style="{StaticResource  NumNormal}">
+            <TextBlock Grid.Row="1" FontFamily="Segoe UI" Style="{StaticResource  NumNormal}">
             <Run Style="{StaticResource SmallLabel}">Segoe UI</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
-        <TextBlock Grid.Row="1" FontFamily="Segoe UI" Style="{StaticResource  NumTabular}">
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+            <TextBlock Grid.Row="1" FontFamily="Segoe UI" Style="{StaticResource  NumTabular}">
             <Run Style="{StaticResource SmallLabel}">Segoe UI</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
 
-        <TextBlock Grid.Row="2" FontFamily="Bahnschrift" Style="{StaticResource  NumNormal}">
-            <Run Style="{StaticResource SmallLabel}">Bahnschrift</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
-        <TextBlock Grid.Row="2" FontFamily="Bahnschrift" Style="{StaticResource  NumTabular}">
-            <Run Style="{StaticResource SmallLabel}">Bahnschrift</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
+            <TextBlock Grid.Row="2" FontFamily="Impact" Style="{StaticResource  NumNormal}">
+                <Run Style="{StaticResource SmallLabel}">Impact</Run><LineBreak />
+                <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+            <TextBlock Grid.Row="2" FontFamily="Impact" Style="{StaticResource  NumTabular}">
+                <Run Style="{StaticResource SmallLabel}">Impact</Run><LineBreak />
+                <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
 
-        <TextBlock Grid.Row="3" FontFamily="Arial" Style="{StaticResource  NumNormal}">
+            <TextBlock Grid.Row="3" FontFamily="Bahnschrift" Style="{StaticResource  NumNormal}">
+            <Run Style="{StaticResource SmallLabel}">Bahnschrift</Run><LineBreak />
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+            <TextBlock Grid.Row="3" FontFamily="Bahnschrift" Style="{StaticResource  NumTabular}">
+            <Run Style="{StaticResource SmallLabel}">Bahnschrift</Run><LineBreak />
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+
+            <TextBlock Grid.Row="4" FontFamily="Arial" Style="{StaticResource  NumNormal}">
             <Run Style="{StaticResource SmallLabel}">Arial</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
-        <TextBlock Grid.Row="3" FontFamily="Arial" Style="{StaticResource  NumTabular}">
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+            <TextBlock Grid.Row="4" FontFamily="Arial" Style="{StaticResource  NumTabular}">
             <Run Style="{StaticResource SmallLabel}">Arial</Run><LineBreak />
-            <Run>00:00:00</Run><LineBreak /><Run>11:11:11</Run>
-        </TextBlock>
-    </Grid>
+            <Run>|00:00:00|</Run><LineBreak /><Run>|11:11:11|</Run>
+            </TextBlock>
+        </Grid>
+    </Border>
 </Window>
